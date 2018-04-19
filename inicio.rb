@@ -66,7 +66,7 @@ def procesoMostrarVales
 	opciones = Hash.new
 	# Extracción de los vales del archivo Registros.txt
 	indice = 0
-	registros = File.open 'Registro.txt', 'r'
+	registros = File.open './datos/Registro.txt', 'r'
 	registros.each do |registro|
 		indice += 1
 		opciones[indice] = registro

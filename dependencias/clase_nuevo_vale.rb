@@ -33,7 +33,7 @@ class NuevoVale
 		end
 		vale += fechaActual + " | " + "NR"
 		# Creación de un objetos de la clase File.
-		File.open 'Registro.txt', 'a+' do |registro|
+		File.open './datos/Registro.txt', 'a+' do |registro|
 			registro.puts vale
 			puts "=> Vale registrado y en espera de aceptación."
 		end
