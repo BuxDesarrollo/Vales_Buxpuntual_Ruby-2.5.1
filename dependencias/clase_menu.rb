@@ -10,7 +10,7 @@ class Menu
 		# Diseño del titulo.
 		puts ("--- [" + @titulo + "] ---").center 40
 		# Verificación de opciones disponibles.
-		if @opciones != nil
+		if @opciones != nil then
 			# Extracción de opciones.
 			for clave, opcion in @opciones
 				puts "[" + clave.to_s + "]" + ": " + opcion
@@ -24,7 +24,7 @@ class Menu
 			puts "> " + peticion + ":"
 			respuestas.push gets.chomp
 
-			if (vueltas == @peticiones.length)
+			if (vueltas == @peticiones.length) then
 				return respuestas
 			end
 		end
@@ -32,7 +32,7 @@ class Menu
 
 	def validarOpcionMenu opcion
 		# Verificación de la opción ingresada.
-		if @opciones[opcion[0].to_i]
+		if @opciones[opcion[0].to_i] then
 			return true
 		else
 			puts "=> Ingrese una opción valida."

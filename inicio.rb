@@ -23,12 +23,12 @@ def procesoPrincipal
 	while true
 		respuesta = menu.iniciar
 
-		if menu.validarOpcionMenu respuesta
-			if respuesta[0].to_i == 1
+		if menu.validarOpcionMenu respuesta then
+			if respuesta[0].to_i == 1 then
 				# Llamada al segundo proceso del programa.
 				procesoNuevoVale
 			end
-			if respuesta[0].to_i == 2
+			if respuesta[0].to_i == 2 then
 				# Llamada al tercer proceso del programa.
 				procesoMostrarVales
 			end
@@ -55,7 +55,7 @@ def procesoNuevoVale
 	# Creación de un objeto de la clase NuevoVale.
 	nuevoVale = NuevoVale.new
 	
-	if nuevoVale.preparar respuestas
+	if nuevoVale.preparar respuestas then
 		nuevoVale.registrarNuevoVale
 	end
 end
@@ -72,7 +72,7 @@ def procesoMostrarVales
 		opciones[indice] = registro
 	end
 	registros.close
-	if (opciones.length == 0)
+	if (opciones.length == 0) then
 		opciones[1] = "Salir"
 	else
 		opciones[(indice + 1)] = "Salir"
@@ -88,8 +88,8 @@ def procesoMostrarVales
 	while true
 		respuesta = menu.iniciar
 
-		if menu.validarOpcionMenu respuesta
-			if (opciones[respuesta[0].to_i] == 'Salir')
+		if menu.validarOpcionMenu respuesta then
+			if (opciones[respuesta[0].to_i] == 'Salir') then
 				procesoPrincipal
 			else
 				# Definición de los datos.
@@ -110,13 +110,26 @@ def procesoMostrarVales
 				while true
 					respuesta_1 = menu.iniciar
 
-					if menu.validarOpcionMenu respuesta_1
-						if respuesta_1[0].to_i == 1
+					if menu.validarOpcionMenu respuesta_1 then
+						if respuesta_1[0].to_i == 1 then
 							opciones.delete respuesta[0].to_i
+
+							for indice, opcion in opciones
+								if (opcion == 'Salir') then
+									opciones.delete indice
+
+									# Creación de un objetos de la clase File.
+									File.open './datos/Registro.txt', 'w+' do |registro|
+										for indice, opcion in opciones
+											registro.puts opcion
+										end
+									end
+								end
+							end
 							puts "=> El vale ha sido recibido."
 							procesoPrincipal
 						end
-						if respuesta_1[0].to_i == 2
+						if respuesta_1[0].to_i == 2 then
 							procesoMostrarVales
 						end
 					end

@@ -6,14 +6,14 @@ class NuevoVale
 		# Verificación de respuestas validas.
 		resultados = Array.new
 		for respuesta in @respuestas
-			if respuesta != ''
+			if respuesta != '' then
 				resultados.push true
 			else
 				resultados.push false
 			end
 		end
 
-		if resultados.any? { |resultado| resultado == false}
+		if resultados.any? { |resultado| resultado == false} then
 			resultados = resultados.select { |resultado| resultado == false}
 			puts "Fallado => " + resultados.length.to_s + " respuestas no contenían información."
 			return false
@@ -31,7 +31,7 @@ class NuevoVale
 		for respuesta in @respuestas
 			vale += respuesta + " | "
 		end
-		vale += fechaActual + " | " + "NR"
+		vale += fechaActual
 		# Creación de un objetos de la clase File.
 		File.open './datos/Registro.txt', 'a+' do |registro|
 			registro.puts vale
